@@ -7,6 +7,12 @@ const root = document.querySelector("#root");
 api.index().then((products) => {
   root.innerHTML = `<main class="container mx-auto flex flex-col items-center">
 ${Form} ${Table(products)}</main>`;
-});
 
-root.innerHTML = `<p class="text-center">Hello World!</p>`;
+  root.querySelector("#search").addEventListener("keyup", (e) => {
+    console.log(
+      products.filter((product) =>
+        product.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+  });
+});
